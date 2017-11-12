@@ -176,7 +176,7 @@ cv.biglasso <- function(X, y, row.idx = 1:nrow(X), eval.metric = c("default", "M
 cvf <- function(i, XX, y, eval.metric, cv.ind, cv.args, parallel= FALSE) {
   # reference to the big.matrix by descriptor info
   if (parallel) {
-    XX <- attach.big.matrix(XX)
+    XX <- bigmemory::attach.big.matrix(XX)
   }
   cv.args$X <- XX
   cv.args$y <- y
