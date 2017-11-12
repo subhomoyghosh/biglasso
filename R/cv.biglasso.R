@@ -123,7 +123,7 @@ cv.biglasso <- function(X, y, row.idx = 1:nrow(X), eval.metric = c("default", "M
     parallel::clusterCall(cluster, function() {
      
       require(biglasso)
-      # require(bigmemory)
+      require(bigmemory)
       # require(Matrix)
       # dyn.load("~/GitHub/biglasso.Rcheck/biglasso/libs/biglasso.so")
       # source("~/GitHub/biglasso/R/biglasso.R")
