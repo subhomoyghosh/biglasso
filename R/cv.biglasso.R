@@ -136,7 +136,7 @@
 #' 
 #' @export cv.biglasso
 #' 
-cv.biglasso2 <- function(X, y, row.idx = 1:nrow(X), eval.metric = c("default", "MAPE"),
+cv.biglasso <- function(X, y, row.idx = 1:nrow(X), eval.metric = c("default", "MAPE"),
                          ncores = parallel::detectCores(), ...,
                          nfolds = 5, seed, cv.ind, trace = FALSE) {
   #TODO: 
