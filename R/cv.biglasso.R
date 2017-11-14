@@ -184,8 +184,8 @@ cv.biglasso <- function(X, y, row.idx = 1:nrow(X), eval.metric = c("default", "M
    
      parallel <- TRUE
     ## pass the descriptor info to each cluster ##
-    xdesc <- bigmemory::describe(X)
-    fold.results <- mclapply(1:nfolds, FUN = cvf, XX = xdesc, 
+    #xdesc <- bigmemory::describe(X)
+    fold.results <- mclapply(1:nfolds, FUN = cvf, XX = X, 
                                         y = y, eval.metric = eval.metric, 
                                         cv.ind = cv.ind, cv.args = cv.args, 
                                         parallel = parallel,mc.cores=ncores)
@@ -230,9 +230,9 @@ cv.biglasso <- function(X, y, row.idx = 1:nrow(X), eval.metric = c("default", "M
 
 cvf <- function(i, XX, y, eval.metric, cv.ind, cv.args, parallel= FALSE) {
   # reference to the big.matrix by descriptor info
-  if (parallel) {
-    XX <- bigmemory::attach.big.matrix(XX)
-  }
+ # if (parallel) {
+ #   XX <- bigmemory::attach.big.matrix(XX)
+ # }
   cv.args$X <- XX
   cv.args$y <- y
   cv.args$row.idx <- which(cv.ind != i)
